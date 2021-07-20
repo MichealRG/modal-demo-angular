@@ -24,7 +24,7 @@ export class DataTemplatesService {
   loadData(setOfData: TemplateModel[], fileName: string) {
     this.templatesData = JSON.parse(JSON.stringify(setOfData));
 
-    this.CalculateTime(setOfData);
+    this.CalculateTime();
     this.setIds();
 
     this.activeUrl = this.templatesData[0].url;
@@ -56,30 +56,20 @@ export class DataTemplatesService {
     this.availableTemp.next(this.templatesData.slice((ind - 1) * this.numberOfAvailableTemp, ind * this.numberOfAvailableTemp));
   }
 
-  private CalculateTime(templates: TemplateModel[]) {
-    let calcDate: string;
-    for (let data of templates) {
-      calcDate = String(Math.floor((Date.now() - new Date(data.creationDate).getTime()) / 1000 / 60 / 60 / 24));
-      data.creationDate = calcDate;
+  private CalculateTime() {
+    this.sortData();
+
+    for (let data of this.templatesData) {
+      data.creationDate = (Date.now() - new Date(data.creationDate).getTime())/1000/60/60/24 < 31 ?
+        (Math.floor((Date.now() - new Date(data.creationDate).getTime())/1000/60/60/24) + "D"):
+        data.creationDate+"M";
     }
-    templates = this.sortData(templates, 'date');
-    templates.forEach((data, index) => {
-      calcDate = Math.floor(Number(data.creationDate)) > 30 ?
-        this.templatesData[index].creationDate + "M" : data.creationDate + "D";
-      calcDate = Math.floor(Number(calcDate.slice(0, calcDate.length - 1))) > 12 && !calcDate.includes('D') ?
-        this.templatesData[index].creationDate + "Y" : calcDate;
-      data.creationDate = calcDate;
-      this.templatesData[index] = data;
-    });
-    this.templatesData = templates;
   }
 
-  private sortData(templates: TemplateModel[], date: string): TemplateModel[] {
-    if (date === 'date') {
-      return templates.sort((val1, val2) =>
-        Number(val1.creationDate) - Number(val2.creationDate) ||
+  private sortData(): TemplateModel[] {
+      return this.templatesData.sort((val1, val2) =>
+        new Date(val2.creationDate).getTime() - new Date(val1.creationDate).getTime()||
         val2.version - val1.version);
-    }
   }
 
   private subSubjectTemplates() {
