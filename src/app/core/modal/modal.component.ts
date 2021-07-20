@@ -22,8 +22,8 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.templates = this.templatesService.templatesData;
-    this.availableTemp=this.templates.slice(0,8);
-    this.subOnTemplates = this.templatesService.avaliableTemp.subscribe(templates=>{
+    this.availableTemp=this.templatesService.availableTemplates;
+    this.subOnTemplates = this.templatesService.availableTemp.subscribe(templates=>{
       this.availableTemp=templates;
     });
   }

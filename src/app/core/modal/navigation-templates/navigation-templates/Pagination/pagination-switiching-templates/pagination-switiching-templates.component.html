@@ -2,7 +2,7 @@
   <div class="col col-12 col-md-12 col-lg-12 col-sm-12">
     <pagination
       [totalItems]="totalItems"
-      [itemsPerPage]="8"
+      [itemsPerPage]="numberOfTemplatesOnPage"
       [(ngModel)]="currentPage"
       (pageChanged)="pageChanged($event)"
       [boundaryLinks]="true"

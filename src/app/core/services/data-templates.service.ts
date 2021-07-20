@@ -7,16 +7,16 @@ import {Subject} from "rxjs";
 })
 export class DataTemplatesService {
   templatesData: TemplateModel[];
-  aviabletempaltes: TemplateModel[]
+  availableTemplates: TemplateModel[]
   nameOfFile: string;
   activeUrl: string;
   activeVersion: number;
   prevVersion: number;
   prevUrl: string;
   activatedVersion = new Subject<{ current: string, prev: string, actVers: number, prevVers: number }>();
-  avaliableTemp = new Subject<TemplateModel[]>();
+  availableTemp = new Subject<TemplateModel[]>();
   amountOfTemplates: number;
-  numberOfAvaliableTemp = 8;
+  numberOfAvailableTemp = 2;
 
   constructor() {
   }
@@ -36,7 +36,7 @@ export class DataTemplatesService {
 
     this.nameOfFile = fileName;
 
-    this.aviabletempaltes = this.templatesData.slice(0, this.numberOfAvaliableTemp);
+    this.availableTemplates = this.templatesData.slice(0, this.numberOfAvailableTemp);
 
     this.subSubjectTemplates();
   }
@@ -53,7 +53,7 @@ export class DataTemplatesService {
   }
 
   setActiveTemplates(ind: number) {
-    this.avaliableTemp.next(this.templatesData.slice((ind - 1) * this.numberOfAvaliableTemp, ind * this.numberOfAvaliableTemp));
+    this.availableTemp.next(this.templatesData.slice((ind - 1) * this.numberOfAvailableTemp, ind * this.numberOfAvailableTemp));
   }
 
   private CalculateTime() {
