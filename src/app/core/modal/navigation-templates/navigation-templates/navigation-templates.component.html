@@ -1,9 +1,9 @@
 <div class="disable-decoration-only-pointer" (click)="changeActiveTemplate()">
   <div class="row precisely-theme">
-    <div class="col col-md-3 col-3  precisely-font  ">
+    <div class="col col-3  precisely-font  ">
       <span>V{{template.version}}</span>
     </div>
-    <div class="col col-md-9 col-9 reset-font">
+    <div class="col col-9 reset-font">
       <p class="mb-0  wrap-lines">{{template.author}}</p>
       <div [ngSwitch]="template.creationDate.slice(template.creationDate.length-1)">
         <p class="navigation-gray mt-0 font-size-9" *ngSwitchCase="'D'">
