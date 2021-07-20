@@ -1,0 +1,23 @@
+::ng-deep .page-item.active .page-link {
+  background-color: #7f00ff;
+  border: #7f00ff;
+}
+
+::ng-deep .page-item {
+  margin: 0 2px;
+}
+
+::ng-deep .pagination-prev {
+  margin-right: 8px;
+}
+
+::ng-deep .pagination-next {
+  margin-left: 8px;
+}
+
+::ng-deep .page-link {
+  color: #7f00ff;
+  border: 1px solid #7f00ff;
+}
+
+

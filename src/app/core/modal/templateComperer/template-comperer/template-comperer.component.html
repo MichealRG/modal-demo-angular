@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col col-md-6">
+    <a href="{{currentTemp}}" target="_blank"><i class="fa fa-arrow-right"></i><span
+      class="font-weight-bold ">Version: {{currentVersion}}</span> </a>
+    <img style="max-width:100%;height:auto" src="{{currentTemp}}"
+         alt="There is a problem with your current template :C" class="mt-2 mb-1">
+  </div>
+  <div class="col col-md-6">
+    <a href="{{prevTemp}}" target="_blank" *ngIf=' !(prevTemp=="assets/imgs/TempEmpty.png") '><i
+      class="fa fa-arrow-right"></i> <span class="font-weight-bold">Version: {{prevVersion}}</span> </a>
+    <img style="max-width:100%;height:auto" src="{{prevTemp}}" *ngIf=' !(prevTemp=="assets/imgs/TempEmpty.png") '
+         alt="There is no previous template or unexpected problem with your template :C" class="mt-2 mb-1">
+  </div>
+</div>

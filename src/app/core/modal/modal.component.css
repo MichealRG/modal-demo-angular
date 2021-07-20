@@ -1,0 +1,62 @@
+.precisely-theme {
+  color: #7f00ff;
+}
+
+.precisely-theme:hover {
+  color: #e8cfff;
+}
+
+.btn-precisely {
+  background-color: #b870fd;
+  color: #fff;
+}
+
+.btn-precisely:hover {
+  background-color: #45008b;
+}
+
+@media (min-width: 970px) {
+  .border-gray:first-child {
+    border-right: #b8b8b8 solid 2px;
+  }
+}
+
+.border-gray{
+  border-bottom: #b8b8b8 solid 2px;
+  border-top: #b8b8b8 solid 2px;
+}
+
+.background-lightgray{
+  background-color: #f4f4f4;
+}
+
+.pin-component-to-bottom{
+  align-items: flex-end;
+}
+
+@media (min-width: 1000px) {
+  .box {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.border-top-gradient{
+  padding-top:10px;
+  border-top: 4px solid #ff002f;
+  border-image: repeating-linear-gradient(354deg, rgba(0,0,0,1) 0%, rgb(182, 182, 182) 50%, rgba(214,214,214,1) 100%) 10;
+}
+
+@media (min-width: 1000px) {
+  .border-top-gradient{
+    padding-top:10px;
+    border-top: 4px solid #ff002f;
+    border-image: repeating-linear-gradient(354deg, rgba(0,0,0,1) 0%, rgb(182, 182, 182) 50%, rgba(214,214,214,1) 100%) 10;
+  }
+}

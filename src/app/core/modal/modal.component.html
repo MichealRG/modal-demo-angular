@@ -1,0 +1,28 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{nameOfJsonFile}} history ({{templates.length}} Updates)</h4>
+    <button type="button" class="precisely-theme close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body pt-0 pb-0 ">
+    <div class="row">
+      <div class="col col-md-12 col-lg-3  col-sm-12 col-12 border-gray box">
+        <div class="w-100">
+          <app-navigation-templates *ngFor="let template of availableTemp" [template]="template"
+                                    [index]="template.id"></app-navigation-templates>
+        </div>
+
+        <div class="center w-100 border-top-gradient">
+            <app-pagination-switiching-templates [totalItems]="templates.length"></app-pagination-switiching-templates>
+        </div>
+      </div>
+      <div class="col col-md-12 col-lg-9 col-sm-12  col-12 border-gray background-lightgray">
+        <app-template-comperer></app-template-comperer>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-precisely" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  </div>
+</div>

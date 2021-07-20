@@ -1,0 +1,41 @@
+/*:host ::ng-deep .modal-lg {*/
+/*  max-width: 1200px;*/
+/*}*/
+
+/*:host ::ng-deep .modal-dialog {*/
+/*  max-width: 1200px;*/
+/*}*/
+
+
+::ng-deep .modal-xlg {
+  width: 1200px;
+  max-width: 1200px;
+}
+
+@media (max-width: 1200px) {
+  ::ng-deep .modal-xlg {
+    width: 800px;
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 800px) {
+  ::ng-deep .modal-xlg {
+    width: 460px;
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 412px) {
+  ::ng-deep .modal-xlg {
+    width: 350px;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 320px) {
+  ::ng-deep .modal-xlg {
+    width: 280px;
+    max-width: 280px;
+  }
+}
