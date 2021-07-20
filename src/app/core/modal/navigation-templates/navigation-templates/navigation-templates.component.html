@@ -4,7 +4,7 @@
       <span>V{{template.version}}</span>
     </div>
     <div class="col col-md-9 col-9 reset-font">
-      <p class="mb-0 ">{{template.author}}</p>
+      <p class="mb-0  wrap-lines">{{template.author}}</p>
       <div [ngSwitch]="template.creationDate.slice(template.creationDate.length-1)">
         <p class="navigation-gray mt-0 font-size-9" *ngSwitchCase="'D'">
           Edited {{template.creationDate.slice(0, template.creationDate.length - 1)}} days ago </p>
