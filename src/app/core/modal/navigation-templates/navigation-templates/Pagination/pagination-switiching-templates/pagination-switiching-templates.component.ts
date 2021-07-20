@@ -8,7 +8,9 @@ import {DataTemplatesService} from "../../../../../services/data-templates.servi
   styleUrls: ['./pagination-switiching-templates.component.css']
 })
 export class PaginationSwitichingTemplatesComponent implements OnInit {
+  @Input() totalItems: number;
   numberOfTemplatesOnPage: number;
+  currentPage = 1;
 
   constructor(private templateService: DataTemplatesService) {
   }
@@ -16,9 +18,6 @@ export class PaginationSwitichingTemplatesComponent implements OnInit {
   ngOnInit(): void {
     this.numberOfTemplatesOnPage = this.templateService.numberOfAvailableTemp;
   }
-
-  @Input() totalItems: number;
-  currentPage = 1;
 
   pageChanged($event: PageChangedEvent) {
     this.currentPage = $event.page;
