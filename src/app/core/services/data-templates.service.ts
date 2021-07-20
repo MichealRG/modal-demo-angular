@@ -22,9 +22,9 @@ export class DataTemplatesService {
   }
 
   loadData(setOfData: TemplateModel[], fileName: string) {
-    this.templatesData = setOfData;
+    this.templatesData = JSON.parse(JSON.stringify(setOfData));
 
-    this.CalculateTime();
+    this.CalculateTime(setOfData);
     this.setIds();
 
     this.activeUrl = this.templatesData[0].url;
@@ -56,25 +56,27 @@ export class DataTemplatesService {
     this.availableTemp.next(this.templatesData.slice((ind - 1) * this.numberOfAvailableTemp, ind * this.numberOfAvailableTemp));
   }
 
-  private CalculateTime() {
+  private CalculateTime(templates: TemplateModel[]) {
     let calcDate: string;
-    for (let data of this.templatesData) {
+    for (let data of templates) {
       calcDate = String(Math.floor((Date.now() - new Date(data.creationDate).getTime()) / 1000 / 60 / 60 / 24));
       data.creationDate = calcDate;
     }
-    this.sortData('date');
-    for (let data of this.templatesData) {
+    templates = this.sortData(templates, 'date');
+    templates.forEach((data, index) => {
       calcDate = Math.floor(Number(data.creationDate)) > 30 ?
-        Math.floor(Number(data.creationDate) / 30) + "M" : data.creationDate + "D";
+        this.templatesData[index].creationDate + "M" : data.creationDate + "D";
       calcDate = Math.floor(Number(calcDate.slice(0, calcDate.length - 1))) > 12 && !calcDate.includes('D') ?
-        Math.floor(Number(calcDate.slice(0, calcDate.length - 1)) / 12) + "Y" : calcDate;
+        this.templatesData[index].creationDate + "Y" : calcDate;
       data.creationDate = calcDate;
-    }
+      this.templatesData[index] = data;
+    });
+    this.templatesData = templates;
   }
 
-  private sortData(date: string) {
+  private sortData(templates: TemplateModel[], date: string): TemplateModel[] {
     if (date === 'date') {
-      this.templatesData.sort((val1, val2) =>
+      return templates.sort((val1, val2) =>
         Number(val1.creationDate) - Number(val2.creationDate) ||
         val2.version - val1.version);
     }
