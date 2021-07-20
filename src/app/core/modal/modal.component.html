@@ -9,8 +9,10 @@
     <div class="row">
       <div class="col  col-lg-3 col-12 border-gray box">
         <div class="w-100">
-          <app-navigation-templates *ngFor="let template of availableTemp" [template]="template"
-                                    [index]="template.id"></app-navigation-templates>
+          <app-navigation-templates
+            *ngFor="let template of availableTemp"
+            [template]="template"
+          ></app-navigation-templates>
         </div>
 
         <div class="center w-100 border-top-gradient">

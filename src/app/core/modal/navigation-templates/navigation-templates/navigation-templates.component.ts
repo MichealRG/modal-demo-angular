@@ -9,15 +9,14 @@ import {DataTemplatesService} from "../../../services/data-templates.service";
 })
 export class NavigationTemplatesComponent implements OnInit {
   @Input() template: TemplateModel;
-  @Input() index:number;
 
-  constructor(private tempalteService: DataTemplatesService) { }
+  constructor(private templateService: DataTemplatesService) { }
 
   ngOnInit(): void {
 
   }
 
   changeActiveTemplate() {
-    this.tempalteService.changeActiveTemplate(this.index);
+    this.templateService.changeActiveTemplate(this.template.id);
   }
 }
