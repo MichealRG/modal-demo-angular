@@ -25,8 +25,6 @@ export class CoreComponent implements OnInit {
     };
     const modalOptions = {initialState: initialState, class: 'modal-xlg'}
     this.bsModalRef = this.modalService.show(ModalComponent, modalOptions);
-
-    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
   loadData() {

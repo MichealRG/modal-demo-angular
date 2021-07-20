@@ -16,7 +16,7 @@ export class DataTemplatesService {
   activatedVersion = new Subject<{ current: string, prev: string, actVers: number, prevVers: number }>();
   availableTemp = new Subject<TemplateModel[]>();
   amountOfTemplates: number;
-  numberOfAvailableTemp = 2;
+  numberOfAvailableTemp = 8;
 
   constructor() {
   }

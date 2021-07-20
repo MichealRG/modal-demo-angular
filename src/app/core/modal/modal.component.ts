@@ -15,7 +15,6 @@ export class ModalComponent implements OnInit, OnDestroy {
   templates: TemplateModel[] = [];
   availableTemp: TemplateModel[] = [];
   nameOfJsonFile: string;
-  closeBtnName: string;
 
   constructor(public bsModalRef: BsModalRef, private templatesService: DataTemplatesService) {
   }
