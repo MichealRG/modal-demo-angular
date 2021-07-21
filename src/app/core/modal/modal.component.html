@@ -1,6 +1,11 @@
 <div>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">{{nameOfJsonFile}} history ({{templates.length}} Updates)</h4>
+    <div *ngIf="nameOfJsonFile; else noNameOfFile">
+      <h4 class="modal-title pull-left">{{nameOfJsonFile}} history ({{templates.length}} updates)</h4>
+    </div>
+    <ng-template #noNameOfFile>
+      <h4 class="modal-title pull-left">There is no loaded template :C</h4>
+    </ng-template>
     <button type="button" class="precisely-theme close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -14,14 +19,14 @@
             [template]="template"
           ></app-navigation-templates>
         </div>
-        <div class="center w-100 border-top-gradient">
+        <div class="center w-100 border-top-gradient" *ngIf="nameOfJsonFile">
           <app-pagination-switiching-templates
-            [totalItems]="templates.length">
+            [totalItems]="templates.length" >
           </app-pagination-switiching-templates>
         </div>
       </div>
       <div class="col col-lg-9 col-12 border-gray background-lightgray">
-        <app-template-comperer></app-template-comperer>
+        <app-template-comperer *ngIf="nameOfJsonFile"></app-template-comperer>
       </div>
     </div>
   </div>

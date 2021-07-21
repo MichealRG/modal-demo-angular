@@ -6,9 +6,9 @@ import {Subject} from "rxjs";
   providedIn: 'root'
 })
 export class DataTemplatesService {
-  templatesData: TemplateModel[];
+  templatesData: TemplateModel[] = [];
   availableTemplates: TemplateModel[]
-  nameOfFile: string;
+  nameOfFile = "";
   activeUrl: string;
   activeVersion: number;
   prevVersion: number;
@@ -60,16 +60,16 @@ export class DataTemplatesService {
     this.sortData();
 
     for (let data of this.templatesData) {
-      data.creationDate = (Date.now() - new Date(data.creationDate).getTime())/1000/60/60/24 < 31 ?
-        (Math.floor((Date.now() - new Date(data.creationDate).getTime())/1000/60/60/24) + "D"):
-        data.creationDate+"M";
+      data.creationDate = (Date.now() - new Date(data.creationDate).getTime()) / 1000 / 60 / 60 / 24 < 31 ?
+        (Math.floor((Date.now() - new Date(data.creationDate).getTime()) / 1000 / 60 / 60 / 24) + "D") :
+        data.creationDate + "M";
     }
   }
 
   private sortData(): TemplateModel[] {
-      return this.templatesData.sort((val1, val2) =>
-        new Date(val2.creationDate).getTime() - new Date(val1.creationDate).getTime()||
-        val2.version - val1.version);
+    return this.templatesData.sort((val1, val2) =>
+      new Date(val2.creationDate).getTime() - new Date(val1.creationDate).getTime() ||
+      val2.version - val1.version);
   }
 
   private subSubjectTemplates() {
